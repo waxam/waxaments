@@ -1,0 +1,279 @@
+[{
+  "name": "HAXcmsTheme",
+  "description": "Build a theme for HAXcms that much faster",
+  "wcfactory": {
+    "customElementClass": "LitElement",
+    "templateReturnFunctionPart": "render() {\n    return html",
+    "propertyBinding": {
+      "prefix": "${this.",
+      "suffix": "}"
+    }
+  },
+  "main": "HAXcmsTheme/HAXcmsTheme.js",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "dependencies": {
+    "lit-element": "^2.2.1",
+    "@lrnwebcomponents/haxcms-elements": "^2.2.0",
+    "@lrnwebcomponents/simple-colors": "^2.2.0"
+  },
+  "devDependencies": {
+    "web-animations-js": "2.3.2",
+    "@lrnwebcomponents/deduping-fix": "2.1.1",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@webcomponents/webcomponentsjs": "2.4.0",
+    "concurrently": "4.1.2",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2"
+  }
+}
+,
+{
+  "name": "Vanilla",
+  "description": "HTMLElement class extension, 0 dependencies",
+  "wcfactory": {
+    "customElementClass": "HTMLElement",
+    "templateReturnFunctionPart": "get html() {\n    return ",
+    "propertyBinding": false
+  },
+  "main": "HTMLElement/HTMLElement.js",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "web-animations-js": "2.3.2",
+    "@lrnwebcomponents/deduping-fix": "2.1.1",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@webcomponents/webcomponentsjs": "2.4.0",
+    "concurrently": "4.1.2",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2"
+  }
+}
+,
+{
+  "name": "lit-element",
+  "description": "data binding ++, about as small as possible library",
+  "wcfactory": {
+    "customElementClass": "LitElement",
+    "templateReturnFunctionPart": "render() {\n    return html",
+    "propertyBinding": {
+      "prefix": "${this.",
+      "suffix": "}"
+    }
+  },
+  "main": "LitElement/LitElement.js",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "dependencies": {
+    "lit-element": "2.2.1"
+  },
+  "devDependencies": {
+    "web-animations-js": "2.3.2",
+    "@lrnwebcomponents/deduping-fix": "2.1.1",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@webcomponents/webcomponentsjs": "2.4.0",
+    "concurrently": "4.1.2",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2"
+  }
+}
+,
+{
+  "name": "Singleton via LitElement",
+  "description": "Singleton element pattern with LitElement for help",
+  "wcfactory": {
+    "customElementClass": "LitElement",
+    "templateReturnFunctionPart": "render() {\n    return html",
+    "propertyBinding": {
+      "prefix": "${this.",
+      "suffix": "}"
+    }
+  },
+  "main": "SingletonElement/SingletonElement.js",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "dependencies": {
+    "lit-element": "^2.2.1"
+  },
+  "devDependencies": {
+    "web-animations-js": "2.3.2",
+    "@lrnwebcomponents/deduping-fix": "2.1.1",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@webcomponents/webcomponentsjs": "2.4.0",
+    "concurrently": "4.1.2",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2"
+  }
+}
+,
+{
+  "name": "SkateJS + lit-html",
+  "description": "data binding ++, very small library",
+  "wcfactory": {
+    "customElementClass": "SkateJS",
+    "templateReturnFunctionPart": "render() {\n    return html",
+    "propertyBinding": {
+      "prefix": "${this.",
+      "suffix": "}"
+    }
+  },
+  "main": "SkateJS+Lit/SkateJS.js",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "dependencies": {
+    "@skatejs/renderer-lit-html": "^0.2.2",
+    "skatejs": "^5.2.4",
+    "lit-html": "^1.0.0"
+  },
+  "devDependencies": {
+    "web-animations-js": "2.3.2",
+    "@lrnwebcomponents/deduping-fix": "2.1.1",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@webcomponents/webcomponentsjs": "2.4.0",
+    "concurrently": "4.1.2",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2"
+  }
+}
+,
+{
+  "name": "Slim",
+  "description": "data binding +, incredibly small helper functions",
+  "wcfactory": {
+    "customElementClass": "Slim",
+    "templateReturnFunctionPart": "render(tpl) {\n    this._render",
+    "propertyBinding": {
+      "prefix": "{{",
+      "suffix": "}}"
+    }
+  },
+  "main": "Slim/Slim.js",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "dependencies": {
+    "slim-js": "^4.0.0"
+  },
+  "devDependencies": {
+    "web-animations-js": "2.3.2",
+    "@lrnwebcomponents/deduping-fix": "2.1.1",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@webcomponents/webcomponentsjs": "2.4.0",
+    "concurrently": "4.1.2",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2"
+  }
+}
+,
+{
+  "name": "Twig component",
+  "description": "Process twig on the fly",
+  "wcfactory": {
+    "customElementClass": "HTMLElement",
+    "templateReturnFunctionPart": "getTemplate() {\n    return ",
+    "propertyBinding": {
+      "prefix": "{{ ",
+      "suffix": " }}"
+    }
+  },
+  "main": "TwigComponent/TwigComponent.js",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "dependencies": {
+    "twig": "^1.12.0"
+  },
+  "devDependencies": {
+    "web-animations-js": "2.3.2",
+    "@lrnwebcomponents/deduping-fix": "2.1.1",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@webcomponents/webcomponentsjs": "2.4.0",
+    "concurrently": "4.1.2",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
+    "polymer-build": "3.1.4",
+    "wct-browser-legacy": "1.0.2"
+  }
+}
+,{}]
