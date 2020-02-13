@@ -17,12 +17,12 @@ gulp.task("merge", () => {
         /\/\* REQUIRED FOR TOOLING DO NOT TOUCH \*\//g,
         (classStatement, character, jsFile) => {
           // pull these off the package wcfactory files area
-          let html ='';
+          let html = "";
           if (packageJson.wcfactory.files.html) {
             html = fs
-            .readFileSync(path.join("./", packageJson.wcfactory.files.html))
-            .toString()
-            .trim();
+              .readFileSync(path.join("./", packageJson.wcfactory.files.html))
+              .toString()
+              .trim();
             html = decomment(html);
           }
           let haxString = "";
@@ -38,9 +38,9 @@ gulp.task("merge", () => {
           }
           let rawprops = "{}";
           if (packageJson.wcfactory.files.properties) {
-          rawprops = fs.readFileSync(
-            path.join("./", packageJson.wcfactory.files.properties)
-          );
+            rawprops = fs.readFileSync(
+              path.join("./", packageJson.wcfactory.files.properties)
+            );
           }
           let props = `${rawprops}`;
           props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1');

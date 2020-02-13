@@ -5,9 +5,9 @@
  * @customElement `waxam-payment`
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import {ifDefined} from 'lit-html/directives/if-defined.js';
-import '@power-elements/stripe-elements/stripe-elements.js';
-import { PUBLISHABLE_KEY } from './demo/config.js';
+import { ifDefined } from "lit-html/directives/if-defined.js";
+import "@power-elements/stripe-elements/stripe-elements.js";
+import { PUBLISHABLE_KEY } from "./demo/config.js";
 
 class WaxamPayment extends LitElement {
   /**
@@ -19,8 +19,8 @@ class WaxamPayment extends LitElement {
   static get properties() {
     return {
       debug: { type: Boolean },
-      source: { type: Object },
-    }
+      source: { type: Object }
+    };
   }
   constructor() {
     super();
