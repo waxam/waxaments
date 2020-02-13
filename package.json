@@ -18,7 +18,7 @@
   },
   "author": {
     "name": "waxam",
-    "url": ""
+    "url": "https://github.com/waxam/waxaments"
   },
   "license": "Apache-2.0",
   "repository": "git@github.com:waxam/waxaments.git",
@@ -100,19 +100,11 @@
     "@lrnwebcomponents/deduping-fix": "2.1.1"
   },
   "lint-staged": {
-    "linters": {
-      "*.{js,json}": [
-        "prettier --write",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "elements/**/*.*.js",
-      "**/analysis-error.json",
-      "themes/**/*.*.js",
-      "libraries/**/*.js"
-    ]
-  },
+    "*.{js,json}": "prettier --write",
+    "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
+    "*.css": "stylelint --fix",
+    "*.scss": "stylelint --syntax=scss --fix"
+},
   "keywords": [
     "yeoman-generator",
     "custom-elements",
