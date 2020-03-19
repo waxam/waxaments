@@ -8,7 +8,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import "@power-elements/json-viewer/json-viewer.js";
 import "@power-elements/stripe-elements/stripe-payment-request.js";
-import { PUBLISHABLE_KEY } from "./demo/config.js";
+import { PUBLISHABLE_KEY } from "./lib/config.js";
 
 class WaxamPayment extends LitElement {
   /**
