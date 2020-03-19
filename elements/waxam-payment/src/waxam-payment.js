@@ -27,7 +27,7 @@ class WaxamPayment extends LitElement {
       currency: { type: String },
       debug: { type: Boolean },
       paymentMethod: { type: Object },
-      error: { type: Object },
+      error: { type: Object }
     };
   }
   constructor() {
@@ -38,12 +38,22 @@ class WaxamPayment extends LitElement {
     this.country = "US";
     this.currency = "usd";
     this.displayItems = [
-      { amount: 125, label: 'Double Double' },
-      { amount: 199, label: 'Box of 10 Timbits' },
+      { amount: 125, label: "Double Double" },
+      { amount: 199, label: "Box of 10 Timbits" }
     ];
     this.shippingOptions = [
-      { id: 'pick-up',  amount: 0,   label: 'Pick Up',  detail: "Pick Up at Your Local Timmy's" },
-      { id: 'delivery', amount: 200, label: 'Delivery', detail: 'Timbits to Your Door' }
+      {
+        id: "pick-up",
+        amount: 0,
+        label: "Pick Up",
+        detail: "Pick Up at Your Local Timmy's"
+      },
+      {
+        id: "delivery",
+        amount: 200,
+        label: "Delivery",
+        detail: "Timbits to Your Door"
+      }
     ];
   }
   render() {
@@ -64,7 +74,9 @@ class WaxamPayment extends LitElement {
         request-payer-phone
       >
       </stripe-payment-request>
-      <json-viewer object="${ifDefined(this.error || this.paymentMethod)}"></json-viewer>
+      <json-viewer
+        object="${ifDefined(this.error || this.paymentMethod)}"
+      ></json-viewer>
     `;
   }
 
