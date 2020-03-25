@@ -1,7 +1,7 @@
 /**
  * `stripe-payment`
  * `Payment broker for stripe`
- * 
+ *
  * @demo demo/index.html
  * @customElement `stripe-payment`
  */
@@ -19,36 +19,50 @@ class StripePayment extends LitElement {
    * LitElement render styles
    */
   static get styles() {
-    return [css`
-      [hidden] { display: none !important; }
-      :host {
-        font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        align-items: center;
-        display: grid;
-        grid-gap: 12px;
-        grid-template-areas:
-          'support support'
-          'stripe submit'
-          'output output';
-      }
-      stripe-payment-request { grid-area: submit/stripe/stripe/submit; }
-      stripe-elements { grid-area: stripe; }
-      mwc-button { grid-area: submit; }
-      json-viewer { grid-area: output; }
+    return [
+      css`
+        [hidden] {
+          display: none !important;
+        }
+        :host {
+          font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular",
+            "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+            Helvetica, Arial, sans-serif;
+          align-items: center;
+          display: grid;
+          grid-gap: 12px;
+          grid-template-areas:
+            "support support"
+            "stripe submit"
+            "output output";
+        }
+        stripe-payment-request {
+          grid-area: submit/stripe/stripe/submit;
+        }
+        stripe-elements {
+          grid-area: stripe;
+        }
+        mwc-button {
+          grid-area: submit;
+        }
+        json-viewer {
+          grid-area: output;
+        }
 
-      stripe-elements:not(:defined),
-      json-viewer:not(:defined),
-      mwc-button:not(:defined) {
-        display: none;
-      }
-    `];
+        stripe-elements:not(:defined),
+        json-viewer:not(:defined),
+        mwc-button:not(:defined) {
+          display: none;
+        }
+      `
+    ];
   }
   /**
    * LitElement / popular convention
    */
   static get properties() {
     return {
-      publishableKey: { type: String, attribute: 'publishable-key' },
+      publishableKey: { type: String, attribute: "publishable-key" },
       shippingOptions: { type: Array },
       displayItems: { type: Array },
       amount: { type: Number },
@@ -60,8 +74,8 @@ class StripePayment extends LitElement {
       output: { type: Object },
       unsupported: { type: Boolean },
       submitDisabled: { type: Boolean },
-      paymentText: { type: String, attribute: 'payment-text' },
-      debug: { type: Boolean },
+      paymentText: { type: String, attribute: "payment-text" },
+      debug: { type: Boolean }
     };
   }
   /**
@@ -87,7 +101,9 @@ class StripePayment extends LitElement {
     return html`
       <stripe-payment-request
         ?hidden="${this.output || this.unsupported}"
-        publishable-key="${ifDefined(this.publishableKey ? this.publishableKey : undefined)}"
+        publishable-key="${ifDefined(
+          this.publishableKey ? this.publishableKey : undefined
+        )}"
         .shippingOptions="${this.shippingOptions}"
         .displayItems="${this.displayItems}"
         amount="${this.amount}"
@@ -105,36 +121,56 @@ class StripePayment extends LitElement {
         request-payer-email
         request-payer-phone
       >
-      ${this.displayItems.map(item => html`
-        <stripe-display-item
-          data-amount="${item.amount}"
-          data-label="${item.label}"></stripe-display-item>      
-      `)}
-      ${this.shippingOptions.map(ship => html`
-        <stripe-shipping-option
-          data-id="${ship.id}"
-          data-label="${ship.label}"
-          data-detail="${ship.detail}"
-          data-amount="${ship.amount}"></stripe-shipping-option>
-      `)}
+        ${this.displayItems.map(
+          item => html`
+            <stripe-display-item
+              data-amount="${item.amount}"
+              data-label="${item.label}"
+            ></stripe-display-item>
+          `
+        )}
+        ${this.shippingOptions.map(
+          ship => html`
+            <stripe-shipping-option
+              data-id="${ship.id}"
+              data-label="${ship.label}"
+              data-detail="${ship.detail}"
+              data-amount="${ship.amount}"
+            ></stripe-shipping-option>
+          `
+        )}
       </stripe-payment-request>
-      ${this.debug ? html`<json-viewer .object="${ifDefined(this.error ? this.error : this.paymentMethod)}"></json-viewer>` : ``}
-      ${this.unsupported ? html`
-        <stripe-elements
-            ?hidden="${this.output || !this.unsupported}"
-            generate="source"
-            publishable-key="${ifDefined(this.unsupported ? this.publishableKey : undefined)}"
-            @change="${this.onChange}"
-            @source="${this.onSuccess}"
-            @error="${this.onError}"
-        > </stripe-elements>
-        <mwc-button
-          tabindex="0"
-          ?hidden="${this.output || !this.unsupported}"
-          ?disabled="${this.submitDisabled}"
-          @click="${this.onClick}"
-        >${this.paymentText}</mwc-button>
-      ` : ``}
+      ${this.debug
+        ? html`
+            <json-viewer
+              .object="${ifDefined(
+                this.error ? this.error : this.paymentMethod
+              )}"
+            ></json-viewer>
+          `
+        : ``}
+      ${this.unsupported
+        ? html`
+            <stripe-elements
+              ?hidden="${this.output || !this.unsupported}"
+              generate="source"
+              publishable-key="${ifDefined(
+                this.unsupported ? this.publishableKey : undefined
+              )}"
+              @change="${this.onChange}"
+              @source="${this.onSuccess}"
+              @error="${this.onError}"
+            >
+            </stripe-elements>
+            <mwc-button
+              tabindex="0"
+              ?hidden="${this.output || !this.unsupported}"
+              ?disabled="${this.submitDisabled}"
+              @click="${this.onClick}"
+              >${this.paymentText}</mwc-button
+            >
+          `
+        : ``}
     `;
   }
   /**
@@ -142,7 +178,7 @@ class StripePayment extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldvalue, propName) => {
-      if (propName == 'debug' && this[propName]) {
+      if (propName == "debug" && this[propName]) {
         // import json viewer if we are debugging
         import("@power-elements/json-viewer/json-viewer.js");
       }
@@ -162,7 +198,7 @@ class StripePayment extends LitElement {
     }
   }
   onClick() {
-    this.shadowRoot.querySelector('stripe-elements').submit();
+    this.shadowRoot.querySelector("stripe-elements").submit();
   }
   onFail(event) {
     this.output = event.detail;
