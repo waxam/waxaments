@@ -5,16 +5,16 @@
 import { LitElement, html, css } from 'lit-element/lit-element.js';
 
 /**
- * `waxam-payment`
+ * `stripe-payment`
  * `payment broker`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @demo demo/index.html
- * @customElement waxam-payment
+ * @customElement stripe-payment
  */
-class WaxamPayment extends LitElement {
+class StripePayment extends LitElement {
   
   //styles function
   static get styles() {
@@ -47,7 +47,7 @@ class WaxamPayment extends LitElement {
    * Convention we use
    */
   static get tag() {
-    return "waxam-payment";
+    return "stripe-payment";
   }
 
   /**
@@ -94,5 +94,5 @@ class WaxamPayment extends LitElement {
   }
   
 }
-customElements.define(WaxamPayment.tag, WaxamPayment);
-export { WaxamPayment };
+customElements.define(StripePayment.tag, StripePayment);
+export { StripePayment };

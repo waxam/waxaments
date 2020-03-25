@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../waxam-payment.js"></script>
+    <script type="module" src="../stripe-payment.js"></script>
   </head>
   <body>
 
-    <waxam-payment>
+    <stripe-payment>
       This is the element content.
-    </waxam-payment>
+    </stripe-payment>
 <test-fixture id="BasicTestFixture">
   <template>
-    <waxam-payment></waxam-payment>
+    <stripe-payment></stripe-payment>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <waxam-payment></waxam-payment>
+    <stripe-payment></stripe-payment>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<waxam-payment>', () => {
+  suite('<stripe-payment>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('waxam-payment'), customElements.get("waxam-payment", 'waxam-payment should be an instance of waxamPayment'));
+      assert.instanceOf(document.querySelector('stripe-payment'), customElements.get("stripe-payment", 'stripe-payment should be an instance of waxamPayment'));
     });
 
     /*test('setting a property on the element works', () => {

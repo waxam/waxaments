@@ -1,4 +1,4 @@
-# &lt;waxam-payment&gt;
+# &lt;stripe-payment&gt;
 
 Payment
 > payment broker
@@ -8,19 +8,19 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing JS module / web component */
-import '@waxam/waxam-payment/waxam-payment.js';
+import '@waxam/stripe-payment/stripe-payment.js';
 /* At top of an application with build routine */
-<script type="module" src="@waxam/waxam-payment/waxam-payment.js"></script>
+<script type="module" src="@waxam/stripe-payment/stripe-payment.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@waxam/waxam-payment/waxam-payment.js';
+  import '@waxam/stripe-payment/stripe-payment.js';
   // imperative form
-  import {WaxamPayment} from '@waxam/waxam-payment';
+  import {StripePayment} from '@waxam/stripe-payment';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@waxam/waxam-payment/waxam-payment.js';
+  import './node_modules/@waxam/stripe-payment/stripe-payment.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@waxam/waxam-payment/waxam-payment.js"></script>
+<script type="module" src="https://unpkg.com/@waxam/stripe-payment/stripe-payment.js"></script>
 ```
 
 ## Develop / Demo

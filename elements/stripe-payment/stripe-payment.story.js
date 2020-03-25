@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { WaxamPayment } from "./waxam-payment.js";
+import { StripePayment } from "./stripe-payment.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
 // need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");
@@ -10,24 +10,24 @@ var array_matches = pattern.exec(template);
 template = array_matches[1];
 const stories = storiesOf("Payment", module);
 stories.addDecorator(storybookBridge.withKnobs);
-stories.add("waxam-payment", () => {
+stories.add("stripe-payment", () => {
   var binding = {};
   // start of tag for demo
-  let elementDemo = `<waxam-payment`;
+  let elementDemo = `<stripe-payment`;
   // mix in properties defined on the class
-  for (var key in WaxamPayment.properties) {
+  for (var key in StripePayment.properties) {
     // skip prototype
-    if (!WaxamPayment.properties.hasOwnProperty(key)) continue;
+    if (!StripePayment.properties.hasOwnProperty(key)) continue;
     // convert typed props
-    if (WaxamPayment.properties[key].type.name) {
+    if (StripePayment.properties[key].type.name) {
       let method = "text";
-      switch (WaxamPayment.properties[key].type.name) {
+      switch (StripePayment.properties[key].type.name) {
         case "Boolean":
         case "Number":
         case "Object":
         case "Array":
         case "Date":
-          method = WaxamPayment.properties[key].type.name.toLowerCase();
+          method = StripePayment.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";
@@ -35,7 +35,7 @@ stories.add("waxam-payment", () => {
       }
       binding[key] = storybookBridge[method](
         key,
-        WaxamPayment.properties[key].value
+        StripePayment.properties[key].value
       );
       // ensure ke-bab case
       let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
@@ -47,7 +47,7 @@ stories.add("waxam-payment", () => {
     }
   }
   const innerText = storybookBridge.text("Inner contents", "Payment");
-  elementDemo += `> ${innerText}</waxam-payment>`;
+  elementDemo += `> ${innerText}</stripe-payment>`;
   return `
   <h1>Live demo</h1>
   ${elementDemo}

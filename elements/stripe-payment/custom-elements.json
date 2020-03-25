@@ -1,0 +1,20 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "stripe-payment",
+      "description": "`stripe-payment`\n`payment broker`"
+    },
+    {
+      "name": "stripe-payment",
+      "description": "`stripe-payment`\n`payment broker`"
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "stripe-payment",
+      "description": "`stripe-payment`\n`payment broker`"
+    }
+  ]
+}
