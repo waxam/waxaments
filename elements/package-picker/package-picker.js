@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-const __SERVICEAPI = 'https://localhost:8000/generatePackage?data=';
-const __NPMAPI = 'http://registry.npmjs.com/-/v1/search?size=5&text=';
+const __SERVICEAPI = "https://localhost:8000/generatePackage?data=";
+const __NPMAPI = "http://registry.npmjs.com/-/v1/search?size=5&text=";
 /**
  * `package-picker`
  * `pick items from npm registry and github locations`
@@ -28,7 +28,7 @@ class PackagePicker extends LitElement {
    */
   constructor() {
     super();
-    this.searchTerm = '';
+    this.searchTerm = "";
     this.responseList = [];
     this.list = [];
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
@@ -64,47 +64,56 @@ class PackagePicker extends LitElement {
         @value-changed="${this.searchTermChanged}"
       ></simple-fields-field>
       <div class="response-list">
-        ${this.responseList.map(item => html`
-        <button class="response-item" @click="${this.clickPackage}" data-name="${item.package.name}" data-version="${item.package.version}">
-          ${item.package.name} (${item.package.version})
-          <div>${item.package.description}</div>
-          <div>author: ${item.package.publisher.username}</div>
-        </button>
-        `)}
+        ${this.responseList.map(
+          item => html`
+            <button
+              class="response-item"
+              @click="${this.clickPackage}"
+              data-name="${item.package.name}"
+              data-version="${item.package.version}"
+            >
+              ${item.package.name} (${item.package.version})
+              <div>${item.package.description}</div>
+              <div>author: ${item.package.publisher.username}</div>
+            </button>
+          `
+        )}
       </div>
       <div class="item-list">
-        ${this.list.map((item, index) => html`
-          <simple-fields-field
-            id="item-${index}"
-            @value-changed="${this.checkChanged}"
-            label="${item.name} (${item.version})"
-            .value="${item.value}"
-            type="checkbox"
-          ></simple-fields-field>
-        `)}
+        ${this.list.map(
+          (item, index) => html`
+            <simple-fields-field
+              id="item-${index}"
+              @value-changed="${this.checkChanged}"
+              label="${item.name} (${item.version})"
+              .value="${item.value}"
+              type="checkbox"
+            ></simple-fields-field>
+          `
+        )}
       </div>
     `;
   }
   keyPressed(e) {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       let list = this.list;
       list.push({
-        name: this.shadowRoot.querySelector('#add').value,
-        version: '*',
+        name: this.shadowRoot.querySelector("#add").value,
+        version: "*",
         value: true
       });
       this.list = [...list];
-      this.shadowRoot.querySelector('#add').field.value = '';
-      this.shadowRoot.querySelector('#add').value = '';
+      this.shadowRoot.querySelector("#add").field.value = "";
+      this.shadowRoot.querySelector("#add").value = "";
     }
   }
   checkChanged(e) {
     // remove if unchecked
     if (!e.detail.value) {
       let list = this.list;
-      let index = parseInt(e.target.id.replace('item-',''));
+      let index = parseInt(e.target.id.replace("item-", ""));
       if (list[index].target) {
-        list[index].target.removeAttribute('disabled');
+        list[index].target.removeAttribute("disabled");
       }
       list.splice(index, 1);
       this.list = [...list];
@@ -112,17 +121,17 @@ class PackagePicker extends LitElement {
   }
   clickPackage(e) {
     var index = 0;
-    while (e.path[index].tagName != 'BUTTON') {
+    while (e.path[index].tagName != "BUTTON") {
       index++;
     }
     let target = e.path[index];
-    target.setAttribute('disabled', 'disabled');
+    target.setAttribute("disabled", "disabled");
     let list = this.list;
     list.push({
-      name: target.getAttribute('data-name'),
-      version: target.getAttribute('data-version'),
+      name: target.getAttribute("data-name"),
+      version: target.getAttribute("data-version"),
       value: true,
-      target: target,
+      target: target
     });
     this.list = [...list];
   }
@@ -146,7 +155,7 @@ class PackagePicker extends LitElement {
       }
       .response-item {
         width: 400px;
-        background-color: #EEEEEE;
+        background-color: #eeeeee;
         font-size: 16px;
         height: 100px;
         border: 1px solid black;
@@ -156,7 +165,7 @@ class PackagePicker extends LitElement {
       .response-item:active,
       .response-item:focus,
       .response-item:hover {
-        background-color: #DDDDDD;
+        background-color: #dddddd;
       }
     `;
   }
@@ -180,25 +189,27 @@ class PackagePicker extends LitElement {
     list.forEach(el => {
       response[el.name] = el.version;
     });
-    this.shadowRoot.querySelector('#urltosend').value = __SERVICEAPI + JSON.stringify(response);
+    this.shadowRoot.querySelector("#urltosend").value =
+      __SERVICEAPI + JSON.stringify(response);
   }
   /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'searchTerm') {
-        fetch(`${__NPMAPI}${this[propName]}`).then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          this.responseList = [...data.objects]
-        })
-        .catch((err) => {
-          console.warn(err);
-        });
+      if (propName == "searchTerm") {
+        fetch(`${__NPMAPI}${this[propName]}`)
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            this.responseList = [...data.objects];
+          })
+          .catch(err => {
+            console.warn(err);
+          });
       }
-      if (propName ==  'list') {
+      if (propName == "list") {
         this.updateURLToSend(this[propName]);
       }
     });
