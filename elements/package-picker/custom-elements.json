@@ -1,0 +1,20 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "package-picker",
+      "description": "`package-picker`\n`pick items from npm registry and github locations`"
+    },
+    {
+      "name": "package-picker",
+      "description": "`package-picker`\n`pick items from npm registry and github locations`"
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "package-picker",
+      "description": "`package-picker`\n`pick items from npm registry and github locations`"
+    }
+  ]
+}
