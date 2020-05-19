@@ -18,11 +18,11 @@
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic stripe-payment demo</h3>
+      <div id="card"></div>
       <demo-snippet>
         <template>
-          <stripe-payment id="payment"></stripe-payment>
           <script defer="defer" async="async">
-            var payment = document.getElementById('payment');
+            var payment = document.createElement('stripe-payment');
             // publishable key is imported from a config file
             // and can be found in your Stripe account
             payment.publishableKey = window.PUBLISHABLE_KEY;
@@ -56,7 +56,8 @@
                 detail: 'Things and stuff',
                 amount: 1000,
               }
-            ];       
+            ];
+            document.getElementById('card').appendChild(payment);
           </script>
         </template>
       </demo-snippet>

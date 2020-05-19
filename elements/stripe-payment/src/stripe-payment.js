@@ -74,7 +74,9 @@ class StripePayment extends LitElement {
       unsupported: { type: Boolean },
       submitDisabled: { type: Boolean },
       paymentText: { type: String, attribute: "payment-text" },
-      debug: { type: Boolean }
+      debug: { type: Boolean },
+      action: { type: String },
+      generate: { type: String }
     };
   }
   /**
@@ -87,6 +89,9 @@ class StripePayment extends LitElement {
     this.displayItems = [];
     this.shippingOptions = [];
     this.amount = 0;
+    // endpoint to submit on success
+    this.action = '';
+    this.generate = 'source';
     this.paymentText = "Submit";
     this.label = "Purchase";
     this.country = "US";
@@ -99,6 +104,8 @@ class StripePayment extends LitElement {
     return html`
       <stripe-payment-request
         ?hidden="${this.output || this.unsupported}"
+        action="${this.action}"
+        generate="${this.generate}"
         publishable-key="${this.publishableKey}"
         .shippingOptions="${this.shippingOptions}"
         .displayItems="${this.displayItems}"
@@ -112,7 +119,6 @@ class StripePayment extends LitElement {
         @fail="${this.onFail}"
         @ready="${this.onReady}"
         @unsupported="${this.onUnsupported}"
-        generate="source"
         request-payer-name
         request-payer-email
         request-payer-phone
@@ -146,9 +152,10 @@ class StripePayment extends LitElement {
       ${this.unsupported
         ? html`
             <stripe-elements
-              ?hidden="${this.output || !this.unsupported}"
-              generate="source"
-              publishable-key="${this.unsupported ? this.publishableKey : undefined}"
+              ?hidden="${this.output}"
+              action="${this.action}"
+              generate="${this.generate}"
+              publishable-key="${this.publishableKey}"
               @change="${this.onChange}"
               @source="${this.onSuccess}"
               @error="${this.onError}"
@@ -156,7 +163,7 @@ class StripePayment extends LitElement {
             </stripe-elements>
             <mwc-button
               tabindex="0"
-              ?hidden="${this.output || !this.unsupported}"
+              ?hidden="${this.output}"
               ?disabled="${this.submitDisabled}"
               @click="${this.onClick}"
               >${this.paymentText}</mwc-button
