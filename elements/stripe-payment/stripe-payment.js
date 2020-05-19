@@ -1,13 +1,13 @@
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { ifDefined } from "lit-html/directives/if-defined.js";
+import "@power-elements/stripe-elements/stripe-payment-request.js";
 /**
  * `stripe-payment`
  * `Payment broker for stripe`
  *
- * @demo demo/index.html
  * @customElement `stripe-payment`
+ * @demo demo/index.html
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import { ifDefined } from "lit-html/directives/if-defined.js";
-
 class StripePayment extends LitElement {
   /**
    * Convention
@@ -92,7 +92,6 @@ class StripePayment extends LitElement {
     this.label = "Purchase";
     this.country = "US";
     this.currency = "usd";
-    import("@power-elements/stripe-elements/stripe-payment-request.js");
   }
   /**
    * LitElement render
