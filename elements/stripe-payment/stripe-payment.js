@@ -90,8 +90,8 @@ class StripePayment extends LitElement {
     this.shippingOptions = [];
     this.amount = 0;
     // endpoint to submit on success
-    this.action = '';
-    this.generate = 'source';
+    this.action = "";
+    this.generate = "source";
     this.paymentText = "Submit";
     this.label = "Purchase";
     this.country = "US";

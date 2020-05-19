@@ -75,7 +75,8 @@ class StripePayment extends LitElement {
       submitDisabled: { type: Boolean },
       paymentText: { type: String, attribute: "payment-text" },
       debug: { type: Boolean },
-      action: { type: String },
+      chargeUrl: { type: String, attribute: "charge-url" },
+      paymentUrl: { type: String, attribute: "payment-url" },
       generate: { type: String }
     };
   }
@@ -90,8 +91,9 @@ class StripePayment extends LitElement {
     this.shippingOptions = [];
     this.amount = 0;
     // endpoint to submit on success
-    this.action = '';
-    this.generate = 'source';
+    this.chargeUrl = "/charges";
+    this.paymentUrl ="/payment";
+    this.generate = "source";
     this.paymentText = "Submit";
     this.label = "Purchase";
     this.country = "US";
