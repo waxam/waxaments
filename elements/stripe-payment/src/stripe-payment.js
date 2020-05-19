@@ -92,7 +92,7 @@ class StripePayment extends LitElement {
     this.amount = 0;
     // endpoint to submit on success
     this.chargeUrl = "/charges";
-    this.paymentUrl ="/payment";
+    this.paymentUrl = "/payment";
     this.generate = "source";
     this.paymentText = "Submit";
     this.label = "Purchase";
