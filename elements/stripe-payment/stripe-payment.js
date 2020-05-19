@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { ifDefined } from "lit-html/directives/if-defined.js";
 import "@power-elements/stripe-elements/stripe-payment-request.js";
 /**
  * `stripe-payment`
@@ -100,9 +99,7 @@ class StripePayment extends LitElement {
     return html`
       <stripe-payment-request
         ?hidden="${this.output || this.unsupported}"
-        publishable-key="${ifDefined(
-          this.publishableKey ? this.publishableKey : undefined
-        )}"
+        publishable-key="${this.publishableKey}"
         .shippingOptions="${this.shippingOptions}"
         .displayItems="${this.displayItems}"
         amount="${this.amount}"
@@ -142,9 +139,7 @@ class StripePayment extends LitElement {
       ${this.debug
         ? html`
             <json-viewer
-              .object="${ifDefined(
-                this.error ? this.error : this.paymentMethod
-              )}"
+              .object="${this.error ? this.error : this.paymentMethod}"
             ></json-viewer>
           `
         : ``}
@@ -153,9 +148,7 @@ class StripePayment extends LitElement {
             <stripe-elements
               ?hidden="${this.output || !this.unsupported}"
               generate="source"
-              publishable-key="${ifDefined(
-                this.unsupported ? this.publishableKey : undefined
-              )}"
+              publishable-key="${this.unsupported ? this.publishableKey : undefined}"
               @change="${this.onChange}"
               @source="${this.onSuccess}"
               @error="${this.onError}"
